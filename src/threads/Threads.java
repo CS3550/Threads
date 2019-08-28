@@ -22,17 +22,15 @@ public class Threads {
             
             final UnsafeAccount b2 = new UnsafeAccount();
             
-            Runnable Alice = ()->b2.DepositCash();            
-            Runnable Bob = ()->b2.DepositCash();
+            //Create two runnable instances pointing to b2
             
-            Thread AliceThread = new Thread(Alice);
-            Thread BobThread = new Thread(Bob);
+            //Create wto threads pointing to these runnables
             
-            AliceThread.start();
-            BobThread.start();
+            //Start these threads
             
-            AliceThread.join();
-            BobThread.join();
+            //Wait for these threads to finish
+            
+            //Print the sum
             
             System.out.println("Two threads unlocked");
             b2.PrintBalance();
@@ -41,22 +39,20 @@ public class Threads {
             //Threaded code with locked code underneath
             final LockedAccount b3 = new LockedAccount();
             
-            Runnable AliceLocked = ()->b3.DepositCash();
-            Runnable BobLocked = ()->b3.DepositCash();
+           //Create two runnable instances pointing to b2
             
-            Thread AliceThreadLocked = new Thread(AliceLocked);
-            Thread BobThreadLocked = new Thread(BobLocked);
+            //Create wto threads pointing to these runnables
             
-            AliceThreadLocked.start();
-            BobThreadLocked.start();
+            //Start these threads
             
-            AliceThreadLocked.join();
-            BobThreadLocked.join();
+            //Wait for these threads to finish
+            
+            //Print the sum
             
             System.out.println("Two threads locked");
             b3.PrintBalance();
             
-        } catch (InterruptedException ex) {
+        } catch (Exception ex) {
             ex.printStackTrace();;
         }
     }
